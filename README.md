@@ -1,4 +1,4 @@
-# Full-Stack Project: Food Search App
+# Full-Stack Project: Food Search App(Foody-zone)
 
 This is a full-stack web application for searching and filtering food items. The frontend is built with **React** and styled with **Styled Components**, while the backend is powered by **Node.js**. The app allows users to search for food items, filter them by meal type (e.g., breakfast, lunch, dinner), and view details about each food item.
 
@@ -52,5 +52,5 @@ Ensure you have the following installed:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+   git clone https://github.com/Kunalkrsingh-10/Foody-zone.git
+   cd Foody-zone
