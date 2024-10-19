@@ -43,6 +43,16 @@ const searchFood =(e)=>{
   const filter= data?.filter((food)=>food.name.toLowerCase().includes(searchValue.toLowerCase()));
   setFilterData(filter);
 };
+const filterfood =(type)=>{
+  if(type==="all"){
+    setFilterData(data);
+    setSelectedBtn("all");
+    return;
+  }
+  const filter= data?.filter((food)=>food.type.toLowerCase().includes(type.toLowerCase()));
+  setFilterData(filter);
+  setSelectedBtn(type);
+}
 console.log(data);
 if (error) return <div>{error}</div>;
 if(loading) return <div>Loading ...</div>
@@ -65,10 +75,10 @@ if(loading) return <div>Loading ...</div>
       </div>
     </Topcontainer>
     <FilterContainer>
-      <Button>All</Button>
-      <Button>Breakfast</Button>
-      <Button>Lunch</Button>
-      <Button>Dinner</Button>
+      <Button onClick={()=>filterfood('all')}>All</Button>
+      <Button onClick={()=>filterfood("breakfast")}>Breakfast</Button>
+      <Button onClick={()=>filterfood('lunch')}>Lunch</Button>
+      <Button onClick={()=>filterfood("dinner")}>Dinner</Button>
     </FilterContainer>
     </Container >
     <SearchResult data={filterData} baseDir={BASE_DIR}/>
@@ -100,6 +110,10 @@ padding-right:130px;
     padding: 0px 10px;
     margin-right: -20px;
   }}
+  @media(0 <width< 600px){
+    flex-direction:column;
+    height:60px;
+  }
 `;
 const FilterContainer =styled.section`
 display: flex;
