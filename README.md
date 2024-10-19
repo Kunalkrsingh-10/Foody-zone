@@ -1,7 +1,7 @@
 # Full-Stack Project: Food Search App(Foody-zone)
 
 This is a full-stack web application for searching and filtering food items. The frontend is built with **React** and styled with **Styled Components**, while the backend is powered by **Node.js**. The app allows users to search for food items, filter them by meal type (e.g., breakfast, lunch, dinner), and view details about each food item.
-![UI of fullstack web app](.src/assets/UI.png)
+![UI of fullstack web app](.app/src/assets/UI.png)
 
 ## Features
 
