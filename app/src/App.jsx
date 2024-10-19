@@ -8,6 +8,8 @@ const App = () => {
 const [data, setData] = useState([]);
 const [loading, setLoading] = useState(false);
 const[error, setError] =useState(null);
+const[filterData, setFilterData] = useState([]);
+const [selectedBtn, setSelectedBtn] = useState("all");
 useEffect(() => {
   const fetchData = async () => { 
     setLoading(true);
@@ -21,6 +23,7 @@ useEffect(() => {
       console.log("Fetched Data:", result); 
       setData(result);
       setLoading(false);
+      setFilterData(result);
     } catch (error) {
       console.error("Error fetching data:", error); // this will throw error  console not reflect at ui 
       setError("unable to fetch data");// this error will reflect at UI 
@@ -29,7 +32,17 @@ useEffect(() => {
 
   fetchData();
 
-}, []);
+}, []); 
+const searchFood =(e)=>{
+  const searchValue = e.target.value;
+  console.log(searchValue);
+  if(searchValue===""){
+    setFilterData(data);
+    return;
+  }
+  const filter= data?.filter((food)=>food.name.toLowerCase().includes(searchValue.toLowerCase()));
+  setFilterData(filter);
+};
 console.log(data);
 if (error) return <div>{error}</div>;
 if(loading) return <div>Loading ...</div>
@@ -40,14 +53,14 @@ if(loading) return <div>Loading ...</div>
 // text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
 // type: "breakfast",
 //}
-  return(
+  return( <>
 <Container>
     <Topcontainer>
       <div className="logo">
         <img src='./logo.svg' alt="logo" />
       </div>
       <div className="search">
-      <input type="text" placeholder="Search Food..." />
+      <input onChange={searchFood} type="text" placeholder="Search Food..." />
       <BsSearch className="search-icon" />
       </div>
     </Topcontainer>
@@ -57,15 +70,15 @@ if(loading) return <div>Loading ...</div>
       <Button>Lunch</Button>
       <Button>Dinner</Button>
     </FilterContainer>
-    <SearchResult data={data} baseDir={BASE_DIR}/>
-   </Container >
-   
+    </Container >
+    <SearchResult data={filterData} baseDir={BASE_DIR}/>
+   </>
   ) ;
 };
 
 export default App;
 
- const Container = styled.div`
+ export const Container = styled.div`
 max-width: 1200px;
 `;
 const Topcontainer = styled.section`
@@ -102,5 +115,9 @@ color: white;
 padding: 6px 12px;
 
 font-weight:700;
+cursor: pointer;
+&:hover{
+        background-color:red;
+      }
 `;
 

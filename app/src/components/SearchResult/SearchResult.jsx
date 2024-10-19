@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from '../../App';
+import { Button ,Container} from '../../App';
 
 const SearchResult = ({ data, baseDir }) => {
   return (
     <FoodcardContainer>
+        <Container>
       <FoodCards>
         {data.map((food) => (
           <FoodCard key={food.name}>
@@ -23,6 +24,7 @@ const SearchResult = ({ data, baseDir }) => {
           </FoodCard>
         ))}
       </FoodCards>
+      </Container>
     </FoodcardContainer>
   );
 };
@@ -31,19 +33,21 @@ export default SearchResult;
 
 const FoodcardContainer = styled.section`
   background-image: url("/bg.png");
-  height: 665px;
-  width: 1425px;
+  min-height: calc(100vh - 150px);
+  //width: 1425px;
   padding: 20px;
+  background-size: cover;
+  
 `;
 
 const FoodCards = styled.div`
   display: flex;
   flex-wrap: wrap;
   row-gap: 32px;
-  column-gap: 20px;
-  justify-content: center;
-  align-items: center;
-  padding-top: 80px;
+  column-gap:20px;
+  justify-content:center;
+  align-items:center;
+  padding-top: 20px;
 `;
 
 const FoodCard = styled.div`
@@ -89,6 +93,7 @@ const FoodCard = styled.div`
     }
     button {
       font-size: 12px;
+      
     }
   }
 `;
