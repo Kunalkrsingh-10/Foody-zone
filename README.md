@@ -2,10 +2,6 @@
 
 This is a full-stack web application for searching and filtering food items. The frontend is built with **React** and styled with **Styled Components**, while the backend is powered by **Node.js**. The app allows users to search for food items, filter them by meal type (e.g., breakfast, lunch, dinner), and view details about each food item.
 
-
-
-> **Note**: Replace the image path `./frontend/public/app-screenshot.png` with the correct path to your screenshot or any image.
-
 ## Features
 
 - **Frontend**:
